@@ -1,58 +1,74 @@
-let humanScore, computerScore = 0;
+const playGame = () => {
 
-function getComputerChoice() {
-    let randNum = Math.random();
+    let humanScore, computerScore = 0;
 
-    if (randNum >= 0) {
-        return "rock";
-    }
-    else if (randNum < 1) {
-        return "paper";
-    }
-    else {
-        return "scissors";
-    }
-}
+    function getComputerChoice() {
+        let randNum = Math.random();
 
-function getHumanChoice() {
-    let humanChoice = prompt("Rock, Paper, or Scissors? ").toLowerCase();
-    return humanChoice;
-}
-
-function playRound(humanChoice, computerChoice) {
-    if (humanChoice == "rock" && computerChoice == "rock") {
-        humanScore, computerScore += 1;
-        console.log("You tie! Rock meets Rock.");
-    }
-    else if (humanChoice == "paper" && computerChoice == "paper") {
-        humanScore, computerScore += 1;
-        console.log("You tie! Paper meets Paper.");
-    }
-    else if (humanChoice == "scissors" && computerChoice == "scissors") {
-        humanScore, computerScore += 1;
-        console.log("You tie! Scissors meets Scissors.");
-    }
-    else if (humanChoice == "rock" && computerChoice == "paper") {
-        computerScore += 1;
-        console.log("You lose! Paper beats rock.");
-    }
-    else if (humanChoice == "rock" && computerChoice == "scissors") {
-        humanScore += 1;
-        console.log("You win! Rock beats Scissors.");
-    }
-    else if (humanChoice == "scissors" && computerChoice == "rock") { 
-        computerScore += 1;
-        console.log("You lose! Rock beats Scissors.");
-    }
-    else {
-        humanScore += 1;
-        console.log("You win! Scissors beats Paper.");
+        if (randNum >= 0) {
+            return "rock";
+        }
+        else if (randNum < 1) {
+            return "paper";
+        }
+        else {
+            return "scissors";
+        }
     }
 
-    return humanScore, computerScore;
-}
+    function getHumanChoice() {
+        let humanChoice = prompt("Rock, Paper, or Scissors? ").toLowerCase();
+        return humanChoice;
+    }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+    function playRound(humanChoice, computerChoice) {
+        if (humanChoice == "rock" && computerChoice == "rock") {
+            humanScore, computerScore += 1;
+            console.log("You tie! Rock meets Rock.");
+        }
+        else if (humanChoice == "paper" && computerChoice == "paper") {
+            humanScore, computerScore += 1;
+            console.log("You tie! Paper meets Paper.");
+        }
+        else if (humanChoice == "scissors" && computerChoice == "scissors") {
+            humanScore, computerScore += 1;
+            console.log("You tie! Scissors meets Scissors.");
+        }
+        else if (humanChoice == "rock" && computerChoice == "paper") {
+            computerScore += 1;
+            console.log("You lose! Paper beats rock.");
+        }
+        else if (humanChoice == "rock" && computerChoice == "scissors") {
+            humanScore += 1;
+            console.log("You win! Rock beats Scissors.");
+        }
+        else if (humanChoice == "scissors" && computerChoice == "rock") { 
+            computerScore += 1;
+            console.log("You lose! Rock beats Scissors.");
+        }
+        else if (humanChoice == "scissors" && computerChoice == "paper") {
+            humanScore += 1;
+            console.log("You win! Scissors beats Paper.");
+        }
+        else if (humanChoice == "paper" && computerChoice == "rock") { 
+            computerScore += 1;
+            console.log("You win! Paper beats Rock.");
+        }
+        else if (humanChoice == "paper" && computerChoice == "scissors") {
+            humanScore += 1;
+            console.log("You lose! Scissors beats Paper.");
+        }
 
-playRound(humanSelection, computerSelection);
+        return humanScore, computerScore;
+    }
+
+    //const humanSelection = getHumanChoice();
+    //const computerSelection = getComputerChoice();
+
+    for (let round = 0; round < 5; round++) {
+        playRound(getHumanChoice(), getComputerChoice());
+    }
+
+};
+
+playGame();
